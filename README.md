@@ -1,4 +1,9 @@
 # Stellar Accretion Rate Analysis
+
+![Python Version](https://img.shields.io/badge/python-3.13-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-in%20development-yellow)
+
 **Author:**  
 Tanay Ayiliath  
 University of Oklahoma  
@@ -53,7 +58,7 @@ Run Order Visualization:
 2. correlation_analysis.py for initial linear model
 3. main_power_law_fit.py for triple power law output and cleaned data output
 4. uncertainty_ab_bootstrap.py for bootstrapping of mass and age variables to create uncertainty tracks
-5. (Optional) uncertainty_abc_boostrap.py for comparison of c as residual scatter vs c as bootstrapping
+5. (Optional) uncertainty_abc_bootstrap.py for comparison of c as residual scatter vs c as bootstrapping
 6. synthetic_validation.py for creation of synthetic data set and comparison to original for verification of model.
 
 In detail:
@@ -64,9 +69,9 @@ against mass and age.
 - We then load data into main_power_law_fit.py. This program extracts all targets with valid 'logAge', 'Mstar', 'logMacc' 
 columns and runs the triple_power_law model on it, returning a numerical model, along with a log(Macc) vs log(Age) graph 
 coloured by stellar mass. The output further returns a decomposition of residuals.
-- The output csv and npy files are then fed into the bootstrap files. uncertainty_ab_boostrap.py returns a bootstrap
+- The output csv and npy files are then fed into the bootstrap files. uncertainty_ab_bootstrap.py returns a bootstrap
 analysis of the mass and age exponents (called a and b) while using residual method for the residual scatter (denoted as variable c).
-uncertainty_abc_bootstrap.py returns a boostrap analysis of all three variables. User may choose as per requirements.
+uncertainty_abc_bootstrap.py returns a bootstrap analysis of all three variables. User may choose as per requirements.
 - ab_bootstrap is more physically motivated and uses c to represent intrinsic scatter from individual stars.
 abc_bootstrap is more statistically consistent. User may try both to see differences in scatter behaviour.
 - Output of main_power_law_fit.py is then loaded into synthetic_validation.py, which
@@ -76,11 +81,11 @@ generates a synthetic sample of stars and visually compares them to the original
 Given 578 data points, 500 bootstraps:
 | Program | Estimated run time |
 |---|---|
-| uncertainty_ab_bootstrap.py | 6-8 seconds |
-uncertainty_abc_bootstrap.py | 9-11 seconds |
+| `uncertainty_ab_bootstrap.py` | 6-8 seconds |
+| `uncertainty_abc_bootstrap.py` | 9-11 seconds |
 
 ## Requirements
-- Python 3.8+
+- Python 3.13+
 - pip install numpy scipy matplotlib pandas lmfit  
 
 ## Troubleshooting
@@ -107,10 +112,40 @@ python --version
 python -c "import numpy, scipy, matplotlib, pandas, lmfit; print('All modules found')"
 ```
 
-## Contributions and Acknowledgements
+### Getting Help
+
+If you encounter issues not listed here:
+1. Check the [GitHub Issues](https://github.com/TanayAyiliath/stellar-accretion-analysis/issues) page
+2. Open a new issue with:
+   - Full error message
+   - Python version (`python --version`)
+   - Operating system
+   - Steps to reproduce the error
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request or open an Issue for:
+
+- Bug reports
+- Feature requests
+- Documentation improvements
+- Code optimizations
+
+For major changes, please open an issue first to discuss what you would like to change.
+
+## Citing This Work
+
+If you use this code in your research, please cite it as:
+
+Ayiliath, T. (2026). stellar-accretion-analysis (Version 1.0) [Source code]. GitHub. https://github.com/TanayAyiliath/stellar-accretion-analysis
+
+## Acknowledgements
 Project conducted under the supervision of Dr. Sean Matt and Dr. Javier Serna Qui&ntilde;ones at the Astrophysics and Cosmology department
 in the Dodge College of Arts and Sciences at OU. I would like to thank them for all the support and guidance in the completion
 of this project, which would not have been possible otherwise.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Citations:
 Hartmann, L., Herczeg, G., & Calvet, N. 2016, Annual Review of Astronomy and Astrophysics, 54, 135, doi: 10.1146/annurev-astro-081915023347  
